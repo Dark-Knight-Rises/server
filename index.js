@@ -50,3 +50,23 @@ app.post('/createUser', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`server running on ${PORT}`)
 })
+
+/**
+ * 
+ * TO SET UP HEROKU
+ * heroku login
+ * heroku create app-name
+ * echo "web: node index.js" > Procfile
+ * git add .
+ * git commit -m "change"
+ * git push heroku main
+ * 
+ * create procfile with utf-8 encoding
+ * 
+ * in package.json ->
+ * add "scripts": {
+    "start": "node index.js"
+  },
+
+  otherwise heroku will crash
+ */
