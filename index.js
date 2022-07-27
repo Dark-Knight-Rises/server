@@ -46,6 +46,19 @@ app.post('/createUser', async (req, res) => {
     res.json(user)
 })
 
+// api delete
+app.delete('/delete/:id', async (req, res) => {
+    const id = req.body.id
+    // res.send(id)
+    try {
+        await UserModel.findByIdAndRemove(id).exec()
+
+    } catch (error) {
+        console.log(error)
+    }
+    // res.send('deleted')
+})
+
 // listening
 app.listen(PORT, () => {
     console.log(`server running on ${PORT}`)
