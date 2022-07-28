@@ -48,7 +48,7 @@ app.post('/createUser', async (req, res) => {
 
 // api delete
 app.delete('/delete/:id', async (req, res) => {
-    const id = req.body.id
+    const id = req.params.id
     // res.send(id)
     try {
         await UserModel.findByIdAndRemove(id).exec()
@@ -56,7 +56,22 @@ app.delete('/delete/:id', async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-    // res.send('deleted')
+    res.send('deleted')
+})
+
+// api update
+app.put('/update', async (req, res) => {
+    const newName = req.body.newName
+    const id = req.body.id
+
+    try {
+        await UserModel.findByIdAndUpdate(id, {
+            username: newName
+        })
+    } catch (error) {
+        console.log(error)
+    }
+    res.send('updated')
 })
 
 // listening
